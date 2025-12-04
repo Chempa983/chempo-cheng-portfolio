@@ -8,13 +8,14 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: radial-gradient(circle at top, #222 0, #000 55%);
+            background: radial-gradient(circle at top, #3b2512 0, #0b0502 55%);
             color: #d4af37;
+            overflow-x: hidden;
         }
         header {
             padding: 50px 20px;
             text-align: center;
-            background: linear-gradient(135deg, #111, #000);
+            background: linear-gradient(135deg, #1a0f07, #050302);
             border-bottom: 1px solid #444;
             box-shadow: 0 0 25px rgba(0,0,0,0.8);
         }
@@ -34,7 +35,7 @@
             line-height: 1.6;
         }
         h2 {
-            color: #d4af37;
+            color: #f0c96b;
             border-bottom: 1px solid #444;
             padding-bottom: 10px;
             text-transform: uppercase;
@@ -51,19 +52,19 @@
         }
         .service-box:hover {
             transform: translateY(-4px);
-            box-shadow: 0 0 30px rgba(212,175,55,0.35);
+            box-shadow: 0 0 30px rgba(240,201,107,0.35);
         }
         footer {
             text-align: center;
             padding: 25px;
-            color: #777;
+            color: #aa8f50;
             font-size: 14px;
             border-top: 1px solid #333;
             margin-top: 40px;
             background: #050505;
         }
         a {
-            color: #d4af37;
+            color: #f0c96b;
             text-decoration: none;
         }
         a:hover {
@@ -93,7 +94,7 @@
         }
         .portfolio-item:hover {
             transform: scale(1.02);
-            box-shadow: 0 0 28px rgba(212,175,55,0.35);
+            box-shadow: 0 0 28px rgba(240,201,107,0.35);
         }
         .portfolio-item img {
             display: block;
@@ -110,10 +111,41 @@
             border-top: 1px solid #333;
             margin: 40px 0;
         }
+
+        /* padajuće lišće */
+        .leaf {
+            position: fixed;
+            top: -10vh;
+            font-size: 26px;
+            opacity: 0.8;
+            pointer-events: none;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.9; }
+            100% {
+                transform: translateY(110vh) translateX(40px) rotate(140deg);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
 <body>
+
+<!-- nekoliko listova koji padaju -->
+<div class="leaf" style="left:10%; animation-duration:16s; animation-delay:0s;">🍁</div>
+<div class="leaf" style="left:25%; animation-duration:19s; animation-delay:3s;">🍂</div>
+<div class="leaf" style="left:40%; animation-duration:15s; animation-delay:5s;">🍁</div>
+<div class="leaf" style="left:60%; animation-duration:18s; animation-delay:2s;">🍂</div>
+<div class="leaf" style="left:75%; animation-duration:20s; animation-delay:7s;">🍁</div>
+<div class="leaf" style="left:90%; animation-duration:17s; animation-delay:4s;">🍂</div>
 
 <header>
     <h1>Chempo Cheng</h1>
@@ -133,7 +165,7 @@
     <h2>Om mig</h2>
     <p>
         Jag hjälper privatpersoner och mindre företag med professionella texter, översättningar,
-        logotyper, visuella material och CV. Allt arbete är personligt anpassat, med fokus på tydlig
+        logotyper, visuellt material och CV. Varje uppdrag är personligt anpassat med fokus på tydlig
         kommunikation och stilren design.
     </p>
 </section>
@@ -148,12 +180,12 @@
 
     <div class="service-box">
         <h3>✔ Översättning & omformulering (SV–EN–SR)</h3>
-        <p>Naturligt språk, korrekt grammatik och anpassning efter mottagare och syfte.</p>
+        <p>Naturligt språk, korrekt grammatik och anpassat efter mottagare och syfte.</p>
     </div>
 
     <div class="service-box">
         <h3>✔ Logotyper & visuellt material</h3>
-        <p>Modern, enkel och tydlig design – perfekt för nya projekt, småföretag och koncept.</p>
+        <p>Modern och tydlig design – perfekt för nya projekt, småföretag och koncept.</p>
     </div>
 
     <div class="service-box">
@@ -176,15 +208,15 @@
 
     <div class="portfolio-grid">
         <div class="portfolio-item">
-            <img src="logo1.jpg" alt="Chempo Cheng Apartments logotyp">
+            <img src="logo1.jpg" alt="Chempo-Cheng Apartments logotyp">
             <div class="portfolio-caption">Chempo-Cheng Apartments</div>
         </div>
         <div class="portfolio-item">
-            <img src="logo2.jpg" alt="Chempo Cheng Architecture logotyp">
+            <img src="logo2.jpg" alt="Chempo-Cheng Architecture logotyp">
             <div class="portfolio-caption">Chempo-Cheng Architecture</div>
         </div>
         <div class="portfolio-item">
-            <img src="logo3.jpg" alt="Chempo Cheng Jewelry logotyp">
+            <img src="logo3.jpg" alt="Chempo-Cheng Jewelry logotyp">
             <div class="portfolio-caption">Chempo-Cheng Jewelry</div>
         </div>
         <div class="portfolio-item">
@@ -241,7 +273,8 @@
     <h2>About me</h2>
     <p>
         I help individuals and small businesses with professional writing, translations, logo design,
-        visual materials and CVs. Every project is tailored with focus on clarity and clean design.
+        visual materials and CVs. Every project is tailored with focus on clear communication and
+        clean design.
     </p>
 </section>
 
@@ -250,7 +283,7 @@
 
     <div class="service-box">
         <h3>✔ Writing messages & emails</h3>
-        <p>Clear and professional messages for work, everyday life and customer contact.</p>
+        <p>Clear and professional messages for work, everyday situations and customer contact.</p>
     </div>
 
     <div class="service-box">
