@@ -86,6 +86,9 @@
             border-top: 1px solid #333;
             margin: 40px 0;
         }
+        ul {
+            padding-left: 20px;
+        }
 
         /* padajuće lišće */
         .leaf {
@@ -109,8 +112,70 @@
                 opacity: 0;
             }
         }
-        ul {
-            padding-left: 20px;
+
+        /* CTA */
+        .cta-wrap {
+            text-align: center;
+            margin: 22px 0 5px;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(240,201,107,0.55);
+            background: rgba(240,201,107,0.12);
+            color: #f0c96b;
+            font-weight: bold;
+            letter-spacing: 0.3px;
+            box-shadow: 0 0 18px rgba(0,0,0,0.45);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(240,201,107,0.18);
+            box-shadow: 0 0 26px rgba(240,201,107,0.22);
+            color: #ffffff;
+        }
+        .cta-note {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #c7a85c;
+            opacity: 0.95;
+        }
+
+        /* Logo grid */
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 18px;
+        }
+        .logo-card {
+            background: rgba(10,10,10,0.65);
+            border: 1px solid #2c2c2c;
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0 0 18px rgba(0,0,0,0.55);
+        }
+        .logo-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+        .logo-caption {
+            margin: 10px 0 0;
+            font-size: 13px;
+            color: #c7a85c;
+            text-align: center;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 900px) {
+            .logo-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 520px) {
+            .logo-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -127,21 +192,31 @@
 
 <header>
     <div style="text-align:center;">
-        <img src="personal-logo.png" 
+        <img src="personal-logo.png"
              alt="Chempo Cheng personal logo"
              style="width:180px; margin-bottom:15px; filter: drop-shadow(0 0 10px rgba(255,215,0,0.4));">
     </div>
     <h1 style="text-align:center; margin-top:0;">Chempo Cheng</h1>
     <p style="text-align:center;">Virtual Assistant • Digitala tjänster • Texter • Struktur • Kommunikation</p>
+
+    <!-- CTA (global, direkt i header) -->
+    <div class="cta-wrap">
+        <a class="cta-btn"
+           href="mailto:pdojcinovic@proton.me?subject=Uppdrag%20-%20Virtual%20Assistant&body=Hej%20Chempo%20Cheng%2C%0A%0AJag%20vill%20ha%20hj%C3%A4lp%20med%3A%20%0A%0ADeadline%20(%E2%80%9Dbeh%C3%B6vs%20senast%E2%80%9D)%3A%20%0A%0ASpr%C3%A5k%20(SV%2FEN%2FSR)%3A%20%0A%0ATon%20(formell%2Fv%C3%A4nlig%2Fkort%2Fs%C3%A4ljande)%3A%20%0A%0AMaterial%20jag%20bifogar%3A%20%0A%0A%2F%2F%20Kort%20bakgrund%20(om%20det%20beh%C3%B6vs)%0A%0A%0ATack!">
+            Skicka mig ett uppdrag
+        </a>
+        <div class="cta-note">Jag återkopplar samma dag (vardagar) med förslag och nästa steg.</div>
+    </div>
 </header>
 
 <div class="lang-switch">
-    <a href="#sv">🇸🇪 Svenska</a> | 
+    <a href="#sv">🇸🇪 Svenska</a> |
     <a href="#en">🇬🇧 English</a>
 </div>
+
 <div style="text-align:center; margin: 25px 0;">
     <p style="font-size:16px;">
-        💬 Har du frågor eller vill ge feedback?  
+        💬 Har du frågor eller vill ge feedback?
         <a href="https://github.com/Chempa983/chempo-cheng-portfolio/discussions" target="_blank">
             Besök gärna Community & Discussions
         </a>
@@ -200,10 +275,10 @@
 <section>
     <h2>Varför just jag?</h2>
     <p>
-        Det finns många Virtual Assistants idag – konkurrensen är stor. Jag skiljer mig från de flesta
+        Det finns många Virtual Assistants idag – konkurrensen är stor. Jag skiljer mig från många
         genom att kombinera praktisk industribakgrund med digitalt arbete, struktur och kommunikation.
     </p>
-    <p>Jag har något som 95 % inte har:</p>
+    <p>Det som ofta gör skillnad i samarbetet:</p>
     <ul>
         <li>Flera års erfarenhet från industrin (lager, produktion, processer, materialflöden)</li>
         <li>Erfarenhet av produktion, logistik och att hålla flöden igång under tidspress</li>
@@ -220,31 +295,31 @@
 <section>
     <h2>Tjänster & prisnivåer</h2>
     <p>
-        Här är exempel på vanliga uppdrag och ungefärliga prisnivåer. Alla uppdrag kan anpassas efter
+        Här är exempel på vanliga uppdrag och prisnivåer. Alla uppdrag kan anpassas efter
         omfattning, språk och svårighetsgrad.
     </p>
 
     <div class="service-box">
-        <h3>✔ Meddelanden & mejl</h3>
+        <h3>✔ Löpande stöd (timpris)</h3>
+        <p>
+            Perfekt om du vill ha hjälp med administration, struktur, uppföljning, dokument eller löpande kommunikation.<br>
+            <strong>Pris:</strong> från <strong>400 SEK/timme</strong> (exkl. moms).
+        </p>
+    </div>
+
+    <div class="service-box">
+        <h3>✔ Meddelanden & mejl (fast pris)</h3>
         <p>
             Korta, tydliga och professionella texter för jobb, kundkontakt eller vardaglig kommunikation.<br>
-            <strong>Pris:</strong> ca 100–200 SEK per uppdrag.
+            <strong>Pris:</strong> <strong>500 SEK</strong> per mejl (standard) – <strong>700–900 SEK</strong> för viktiga/säljande mejl (exkl. moms).
         </p>
     </div>
 
     <div class="service-box">
-        <h3>✔ Översättning & omformulering</h3>
+        <h3>✔ Översättning & textbearbetning</h3>
         <p>
-            Svenska ↔ Engelska ↔ Serbiska/Bosniska/Kroatiska.<br>
-            <strong>Pris:</strong> ca 1,5–2 SEK per ord (beroende på texttyp).
-        </p>
-    </div>
-
-    <div class="service-box">
-        <h3>✔ Dokument, struktur & presentationer</h3>
-        <p>
-            Skapande av dokument, enklare mallar, sammanställningar och presentationer.<br>
-            <strong>Pris:</strong> efter överenskommelse beroende på omfattning.
+            Svenska ↔ Engelska ↔ Serbiska/Bosniska/Kroatiska. Jag anpassar även ton och sammanhang vid behov.<br>
+            <strong>Pris:</strong> <strong>per sida</strong> (A4) eller <strong>400 SEK/timme</strong> beroende på texttyp (exkl. moms).
         </p>
     </div>
 
@@ -254,6 +329,51 @@
             Om du vill ha löpande hjälp varje vecka eller månad kan vi sätta ett fast paketpris
             baserat på timmar eller typ av uppgifter.
         </p>
+        <p style="margin-top:10px; font-size:14px; color:#c7a85c;">
+            Faktureras via Cool Company (+ moms).
+        </p>
+    </div>
+</section>
+
+<section>
+    <h2>Exempel på visuellt arbete (logotyper)</h2>
+    <p>
+        Här är ett urval av logotyper jag har tagit fram. Jag kan även hjälpa till med enklare visuellt material och layouter vid behov.
+    </p>
+
+    <div class="logo-grid">
+        <div class="logo-card">
+            <img src="assets/logos/chempo-logo-apartments.jpg" alt="Logo – Apartments">
+            <div class="logo-caption">Apartments</div>
+        </div>
+        <div class="logo-card">
+            <img src="assets/logos/chempo-logo-jewelry.jpg" alt="Logo – Jewelry">
+            <div class="logo-caption">Jewelry</div>
+        </div>
+        <div class="logo-card">
+            <img src="assets/logos/chempo-logo-realtor.jpg" alt="Logo – Realtor">
+            <div class="logo-caption">Realtor</div>
+        </div>
+        <div class="logo-card">
+            <img src="assets/logos/chempo-logo-photography.jpg" alt="Logo – Photography">
+            <div class="logo-caption">Photography</div>
+        </div>
+        <div class="logo-card">
+            <img src="assets/logos/chempo-logo-architecture.jpg" alt="Logo – Architecture">
+            <div class="logo-caption">Architecture</div>
+        </div>
+        <div class="logo-card">
+            <img src="assets/logos/chempo-logo-restaurant.jpg" alt="Logo – Restaurant">
+            <div class="logo-caption">Restaurant</div>
+        </div>
+    </div>
+
+    <div class="cta-wrap" style="margin-top:24px;">
+        <a class="cta-btn"
+           href="mailto:pdojcinovic@proton.me?subject=Uppdrag%20-%20Text%2FVA%2FStruktur&body=Hej%20Chempo%20Cheng%2C%0A%0A1)%20Vad%20beh%C3%B6ver%20du%20hj%C3%A4lp%20med%3F%20%0A%0A2)%20Deadline%3A%20%0A%0A3)%20Spr%C3%A5k%3A%20%0A%0A4)%20Ton%3A%20%0A%0A5)%20Eventuella%20bilagor%2Fl%C3%A4nkar%3A%20%0A%0A%0ATack!">
+            Skicka mig ett uppdrag
+        </a>
+        <div class="cta-note">Jag återkopplar samma dag (vardagar). Mindre uppdrag kan ofta levereras samma dag.</div>
     </div>
 </section>
 
@@ -274,9 +394,18 @@
     </p>
     <ul>
         <li><strong>Boka ett kostnadsfritt 15-minuters introduktionssamtal</strong> där vi går igenom dina behov.</li>
-        <li><strong>Eller:</strong> skicka ett konkret uppdrag – jag återkommer med svar och förslag inom 1 timme (vardagar).</li>
+        <li><strong>Eller:</strong> skicka ett konkret uppdrag – jag återkommer samma dag (vardagar) med svar och förslag.</li>
     </ul>
-    <p>
+
+    <div class="cta-wrap">
+        <a class="cta-btn"
+           href="mailto:pdojcinovic@proton.me?subject=15-min%20intro%20-%20Virtual%20Assistant&body=Hej%20Chempo%20Cheng%2C%0A%0AJag%20vill%20boka%20ett%2015-minuters%20introduktionssamtal.%0A%0AF%C3%B6reslagna%20tider%3A%20%0A%0A1)%20%0A2)%20%0A3)%20%0A%0ATema%2Fbehov%20kort%3A%20%0A%0ATack!">
+            Boka 15-min intro
+        </a>
+        <div class="cta-note">Skicka 2–3 tider som passar dig, så svarar jag med en bekräftelse.</div>
+    </div>
+
+    <p style="margin-top:18px;">
         📧 Email: <a href="mailto:pdojcinovic@proton.me">pdojcinovic@proton.me</a><br>
         🌍 Baserad i Sverige – tillgänglig digitalt oavsett var du befinner dig.
     </p>
@@ -331,6 +460,15 @@
             <li>Adapting content to your target audience</li>
         </ul>
     </div>
+
+    <!-- EN CTA inside EN section -->
+    <div class="cta-wrap">
+        <a class="cta-btn"
+           href="mailto:pdojcinovic@proton.me?subject=Task%20-%20Virtual%20Assistant&body=Hi%20Chempo%20Cheng%2C%0A%0AI%20need%20help%20with%3A%20%0A%0ADeadline%3A%20%0A%0ALanguage%20(SV%2FEN%2FSR)%3A%20%0A%0ATone%20(formal%2Ffriendly%2Fshort%2Fsales)%3A%20%0A%0AAttachments%2Flinks%3A%20%0A%0A%0AThank%20you!">
+            Send me a task
+        </a>
+        <div class="cta-note">I reply the same business day with a suggestion and next steps.</div>
+    </div>
 </section>
 
 <section>
@@ -346,6 +484,82 @@
         I understand both the practical side of operations and the administrative demands. I know
         how to sort, communicate and follow up information so that the workflow becomes smoother.
     </p>
+</section>
+
+<section>
+    <h2>Services & pricing</h2>
+    <p>
+        Below are examples of common tasks and price levels. All tasks can be adjusted depending on scope, language and complexity.
+    </p>
+
+    <div class="service-box">
+        <h3>✔ Ongoing support (hourly)</h3>
+        <p>
+            Ideal for administration, structure, follow-ups, documents and ongoing communication.<br>
+            <strong>Price:</strong> from <strong>400 SEK/hour</strong> (excl. VAT).
+        </p>
+    </div>
+
+    <div class="service-box">
+        <h3>✔ Emails & short texts (fixed price)</h3>
+        <p>
+            Clear, professional emails for work, customer contact or daily communication.<br>
+            <strong>Price:</strong> <strong>500 SEK</strong> per email (standard) – <strong>700–900 SEK</strong> for important/sales emails (excl. VAT).
+        </p>
+    </div>
+
+    <div class="service-box">
+        <h3>✔ Translation & text editing</h3>
+        <p>
+            Swedish ↔ English ↔ Serbian/Bosnian/Croatian, including tone and context adaptation when needed.<br>
+            <strong>Price:</strong> <strong>per page</strong> (A4) or <strong>400 SEK/hour</strong> depending on the text (excl. VAT).
+        </p>
+        <p style="margin-top:10px; font-size:14px; color:#c7a85c;">
+            Invoiced via Cool Company (+ VAT).
+        </p>
+    </div>
+</section>
+
+<section>
+    <h2>Logo examples</h2>
+    <p>
+        A small selection of logos I have created. I can also help with simple visuals and layouts when needed.
+    </p>
+
+    <div class="logo-grid">
+        <div class="logo-card">
+            <img src="assets/logos/chempo-logo-apartments.jpg" alt="Logo – Apartments">
+            <div class="logo-caption">Apartments</div>
+        </div>
+        <div class="logo-card">
+            <img src="assets/logos/chempo-logo-jewelry.jpg" alt="Logo – Jewelry">
+            <div class="logo-caption">Jewelry</div>
+        </div>
+        <div class="logo-card">
+            <img src="assets/logos/chempo-logo-realtor.jpg" alt="Logo – Realtor">
+            <div class="logo-caption">Realtor</div>
+        </div>
+        <div class="logo-card">
+            <img src="assets/logos/chempo-logo-photography.jpg" alt="Logo – Photography">
+            <div class="logo-caption">Photography</div>
+        </div>
+        <div class="logo-card">
+            <img src="assets/logos/chempo-logo-architecture.jpg" alt="Logo – Architecture">
+            <div class="logo-caption">Architecture</div>
+        </div>
+        <div class="logo-card">
+            <img src="assets/logos/chempo-logo-restaurant.jpg" alt="Logo – Restaurant">
+            <div class="logo-caption">Restaurant</div>
+        </div>
+    </div>
+
+    <div class="cta-wrap" style="margin-top:24px;">
+        <a class="cta-btn"
+           href="mailto:pdojcinovic@proton.me?subject=Task%20-%20Text%2FVA%2FStructure&body=Hi%20Chempo%20Cheng%2C%0A%0A1)%20What%20do%20you%20need%20help%20with%3F%20%0A%0A2)%20Deadline%3A%20%0A%0A3)%20Language%3A%20%0A%0A4)%20Tone%3A%20%0A%0A5)%20Attachments%2Flinks%3A%20%0A%0A%0AThank%20you!">
+            Send me a task
+        </a>
+        <div class="cta-note">Smaller tasks can often be delivered the same day (business days).</div>
+    </div>
 </section>
 
 <section>
