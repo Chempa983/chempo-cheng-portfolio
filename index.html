@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chempo Cheng – Produktionskonsult</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --dark: #111418;
+      --card: #161b22;
+      --border: #21262d;
+      --accent: #e8b94f;
+      --accent2: #c97d2e;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --white: #f0f6fc;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ─── HERO ────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 70% 40%, rgba(232,185,79,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,125,46,0.05) 0%, transparent 60%);
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      position: relative; z-index: 1;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(232,185,79,0.1); border: 1px solid rgba(232,185,79,0.3);
+      color: var(--accent); font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.4rem 1rem; border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-tag::before { content: '●'; font-size: 0.5rem; }
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      line-height: 1.0;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    h1 span { color: var(--accent); }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--muted);
+      max-width: 480px; margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--black);
+      font-weight: 700; font-size: 0.85rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text); font-weight: 600;
+      font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .hero-stats {
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.5rem 2rem;
+    }
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem; color: var(--accent);
+      letter-spacing: 0.05em; line-height: 1;
+    }
+    .stat-label {
+      color: var(--muted); font-size: 0.8rem;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-top: 0.3rem;
+    }
+
+    /* ─── SECTION BASE ────────────────────────────────── */
+    section { padding: 6rem 4rem; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      letter-spacing: 0.03em; color: var(--white);
+      margin-bottom: 1rem; line-height: 1.1;
+    }
+    .section-desc {
+      color: var(--muted); font-size: 1rem;
+      max-width: 600px; margin-bottom: 3.5rem;
+    }
+
+    /* ─── DIVIDER ─────────────────────────────────────── */
+    .divider {
+      border: none; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0;
+    }
+
+    /* ─── OM MIG ──────────────────────────────────────── */
+    #om-mig { background: var(--dark); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    .about-text p {
+      color: var(--muted); margin-bottom: 1.2rem; font-size: 1rem;
+    }
+    .about-text p strong { color: var(--text); }
+    .about-credentials {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .cred-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--card); border: 1px solid var(--border);
+    }
+    .cred-icon {
+      width: 36px; height: 36px; min-width: 36px;
+      background: rgba(232,185,79,0.1);
+      border: 1px solid rgba(232,185,79,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .cred-title { font-weight: 600; font-size: 0.9rem; color: var(--white); }
+    .cred-sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ─── TJÄNSTER ────────────────────────────────────── */
+    #tjanster { background: var(--black); }
+    .days-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .day-card {
+      background: var(--card);
+      padding: 1.5rem 1.2rem;
+    }
+    .day-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem; color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+    .day-title {
+      font-weight: 600; font-size: 0.85rem;
+      color: var(--white); margin: 0.5rem 0 0.8rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .day-text { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+    .weeks-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .week-card {
+      background: var(--dark);
+      padding: 1.5rem 1.2rem;
+    }
+    .week-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; color: var(--muted);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* ─── PAKET ───────────────────────────────────────── */
+    #paket { background: var(--dark); }
+    .packages {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .pkg {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .pkg:hover { border-color: rgba(232,185,79,0.4); }
+    .pkg.featured {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, var(--card) 0%, rgba(232,185,79,0.04) 100%);
+    }
+    .pkg-badge {
+      position: absolute; top: -12px; left: 2rem;
+      background: var(--accent); color: var(--black);
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+    }
+    .pkg-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .pkg-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; color: var(--white);
+      letter-spacing: 0.05em; margin-bottom: 0.5rem;
+    }
+    .pkg-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem; color: var(--accent);
+      letter-spacing: 0.03em; line-height: 1;
+    }
+    .pkg-price-note {
+      font-size: 0.75rem; color: var(--muted);
+      margin-bottom: 1.5rem; margin-top: 0.2rem;
+    }
+    .pkg-divider {
+      height: 1px; background: var(--border);
+      margin: 1.5rem 0;
+    }
+    .pkg-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 0.7rem;
+    }
+    .pkg-list li {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      font-size: 0.88rem; color: var(--muted);
+    }
+    .pkg-list li::before {
+      content: '→'; color: var(--accent);
+      font-size: 0.9rem; margin-top: 0.05rem; flex-shrink: 0;
+    }
+    .pkg-not {
+      color: #555 !important;
+    }
+    .pkg-not::before { color: #444 !important; }
+    .pkg-cta {
+      display: block; text-align: center;
+      margin-top: 2rem;
+    }
+
+    /* ─── PROCESS ─────────────────────────────────────── */
+    #process { background: var(--black); }
+    .process-steps {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .process-step {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 2rem; align-items: start;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .process-step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem; color: var(--border);
+      letter-spacing: 0.05em; line-height: 1;
+      text-align: center;
+    }
+    .step-content h3 {
+      font-weight: 700; font-size: 1rem;
+      color: var(--white); text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 0.5rem;
+    }
+    .step-content p { font-size: 0.88rem; color: var(--muted); }
+
+    /* ─── KONTAKT ─────────────────────────────────────── */
+    #kontakt { background: var(--dark); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    .contact-info h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem; color: var(--white);
+      letter-spacing: 0.03em; margin-bottom: 1rem;
+    }
+    .contact-info p { color: var(--muted); margin-bottom: 2rem; }
+    .contact-detail {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .contact-detail .icon {
+      width: 40px; height: 40px;
+      background: rgba(232,185,79,0.1);
+      border: 1px solid rgba(232,185,79,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .contact-detail a {
+      color: var(--text); text-decoration: none; font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .contact-detail a:hover { color: var(--accent); }
+    .contact-boxes {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .contact-box {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .contact-box:hover { border-color: rgba(232,185,79,0.4); }
+    .contact-box-title {
+      font-weight: 700; font-size: 0.85rem;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--white); margin-bottom: 0.4rem;
+    }
+    .contact-box p { font-size: 0.83rem; color: var(--muted); margin-bottom: 1rem; }
+
+    /* ─── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 2rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    footer p { font-size: 0.8rem; color: var(--muted); }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem; color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .hero { padding: 7rem 1.5rem 3rem; }
+      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .packages { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .days-grid { grid-template-columns: 1fr 1fr; }
+      .weeks-grid { grid-template-columns: 1fr 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      .days-grid { grid-template-columns: 1fr; }
+      .weeks-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2.8rem; }
+    }
+
+    /* ─── ANIMATIONS ──────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-left > * {
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-left > *:nth-child(2) { animation-delay: 0.25s; }
+    .hero-left > *:nth-child(3) { animation-delay: 0.4s; }
+    .hero-left > *:nth-child(4) { animation-delay: 0.55s; }
+    .hero-stats { animation: fadeUp 0.8s 0.5s ease both; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Chempo Cheng</a>
+  <ul class="nav-links">
+    <li><a href="#om-mig">Om mig</a></li>
+    <li><a href="#tjanster">Tjänster</a></li>
+    <li><a href="#paket">Paket & Pris</a></li>
+    <li><a href="#process">Arbetssätt</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-tag">Produktionskonsult · Skåne, Sverige</div>
+      <h1>Optimera<br/><span>Produktion.</span><br/>Skapa Resultat.</h1>
+      <p class="hero-sub">
+        Jag hjälper tillverkande företag att identifiera operativa förluster,
+        strukturera arbetsflöden och implementera konkreta förbättringar –
+        snabbt och med mätbar effekt.
+      </p>
+      <div class="hero-cta">
+        <a href="#paket" class="btn-primary">Se paketen</a>
+        <a href="#kontakt" class="btn-secondary">Boka intro-samtal</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-number">7+</div>
+        <div class="stat-label">År inom produktion, lager & logistik</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">5 dagar</div>
+        <div class="stat-label">Från analys till konkret åtgärdsplan</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">Lean · 5S · KPI</div>
+        <div class="stat-label">Certifierad projektledare · Processorienterad metodik</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- OM MIG -->
+<section id="om-mig">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">// Om mig</div>
+        <h2>Industriell bakgrund.<br/>Praktiska lösningar.</h2>
+        <p>
+          Jag är en <strong>certifierad projektledare</strong> med bred erfarenhet från produktion,
+          lagerhantering och logistik. Jag förstår hur det ser ut på golvet – och jag vet vad som
+          krävs för att flöden ska fungera under tidspress.
+        </p>
+        <p>
+          Min styrka är att kombinera <strong>operativ förståelse med strukturerat förbättringsarbete</strong>.
+          Jag observerar, analyserar och presenterar konkreta åtgärder – inte generella råd.
+        </p>
+        <p>
+          Jag är van vid att arbeta nära team, skiftledare och produktionschefer för att förstå
+          rotorsakerna bakom ineffektivitet – inte bara symptomen.
+        </p>
+      </div>
+      <div class="about-credentials">
+        <div class="cred-item">
+          <div class="cred-icon">🎓</div>
+          <div>
+            <div class="cred-title">Certifierad Projektledare</div>
+            <div class="cred-sub">Ledning, planering och genomförande av operativa projekt</div>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-icon">🏭</div>
+          <div>
+            <div class="cred-title">Produktionserfarenhet</div>
+            <div class="cred-sub">Lager, materialflöde, produktionsplanering, skiftarbete</div>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-icon">📊</div>
+          <div>
+            <div class="cred-title">KPI · OEE · Lean · 5S</div>
+            <div class="cred-sub">Mätning, uppföljning och kontinuerligt förbättringsarbete</div>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-icon">🌐</div>
+          <div>
+            <div class="cred-title">Flerspråkig kommunikation</div>
+            <div class="cred-sub">Svenska · Engelska · Serbiska / Bosniska / Kroatiska</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- TJÄNSTER -->
+<section id="tjanster">
+  <div class="section-inner">
+    <div class="section-label">// Uppdragsmodell</div>
+    <h2>Hur arbetet ser ut</h2>
+    <p class="section-desc">Strukturerat, fokuserat och levererat enligt plan. Här är hur dagarna och veckorna är uppbyggda.</p>
+
+    <div class="section-label" style="margin-bottom:1rem;">Paket A · 5 Arbetsdagar</div>
+    <div class="days-grid">
+      <div class="day-card">
+        <div class="day-num">Dag 1</div>
+        <div class="day-title">Inledande diagnos</div>
+        <div class="day-text">Genomgång av produktionen, observation av arbetsflöde, samtal med operatörer och ansvariga.</div>
+      </div>
+      <div class="day-card">
+        <div class="day-num">Dag 2</div>
+        <div class="day-title">Problemkartläggning</div>
+        <div class="day-text">Skiftuppföljning, identifiering av flaskhalsar, väntetider, störningar och kommunikationsbrister.</div>
+      </div>
+      <div class="day-card">
+        <div class="day-num">Dag 3</div>
+        <div class="day-title">Rotorsaksanalys</div>
+        <div class="day-text">Jämförelse av skift, analys av maskin-, material- och koordinationsproblem. Orsaker – inte symptom.</div>
+      </div>
+      <div class="day-card">
+        <div class="day-num">Dag 4</div>
+        <div class="day-title">Lösningsförslag</div>
+        <div class="day-text">Konkreta åtgärder: personschema, materialflöde, handover, KPI-uppföljning och standardisering.</div>
+      </div>
+      <div class="day-card">
+        <div class="day-num">Dag 5</div>
+        <div class="day-title">Åtgärdsplan</div>
+        <div class="day-text">Slutrapport, implementeringsplan med prioriteringar och rekommendationer för nästa steg.</div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-bottom:1rem; margin-top: 3rem;">Paket B · 4 Veckor</div>
+    <div class="weeks-grid">
+      <div class="week-card">
+        <div class="week-num">Vecka 1</div>
+        <div class="day-title">Diagnos & bekräftelse</div>
+        <div class="day-text">Fördjupad processanalys, prioriteringar, grundläggande nyckeltal etableras.</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Vecka 2</div>
+        <div class="day-title">Implementering startar</div>
+        <div class="day-text">Första operativa förändringar i organisation, kommunikation och schemaläggning.</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Vecka 3</div>
+        <div class="day-title">Uppföljning & justeringar</div>
+        <div class="day-text">Effektmätning, teamdialoger, finjustering av processer och skiftrutiner.</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Vecka 4</div>
+        <div class="day-title">Stabilisering & slutrapport</div>
+        <div class="day-text">Resultatsammanfattning, slutjusteringar och rekommendationer för 30–90 dagar framåt.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PAKET & PRIS -->
+<section id="paket">
+  <div class="section-inner">
+    <div class="section-label">// Paket & Pris</div>
+    <h2>Välj ditt paket</h2>
+    <p class="section-desc">Båda paketen kan anpassas efter företagets storlek, antal skift och processernas komplexitet.</p>
+
+    <div class="packages">
+      <div class="pkg">
+        <div class="pkg-label">Paket A</div>
+        <div class="pkg-title">5 Arbetsdagar</div>
+        <div class="pkg-price">25 000 SEK</div>
+        <div class="pkg-price-note">exkl. moms · 600 SEK/timme grundsatning</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-list">
+          <li>Tydlig bild av nuläget</li>
+          <li>Prioriterade problempunkter med troliga orsaker</li>
+          <li>Konkreta optimeringsåtgärder</li>
+          <li>Implementeringsplan med prioriteringsordning</li>
+          <li>Underlag för nästa fas</li>
+          <li class="pkg-not">Full implementering ingår ej</li>
+          <li class="pkg-not">KPI-uppföljning över tid ingår ej</li>
+        </ul>
+        <div class="pkg-cta">
+          <a href="mailto:pdojcinovic@proton.me?subject=Intresse%20Paket%20A%20–%205%20dagar&body=Hej%20Chempo%20Cheng,%0A%0AJag%20är%20intresserad%20av%20Paket%20A%20(5%20arbetsdagar).%0A%0AKortfattad%20beskrivning%20av%20mitt%20behov:%0A%0AÖnskad%20startperiod:%0A%0ATack!" class="btn-secondary" style="display:block;text-align:center;">Välj Paket A</a>
+        </div>
+      </div>
+
+      <div class="pkg featured">
+        <div class="pkg-badge">Rekommenderas</div>
+        <div class="pkg-label">Paket B</div>
+        <div class="pkg-title">4 Veckor</div>
+        <div class="pkg-price">75 000 SEK</div>
+        <div class="pkg-price-note">exkl. moms · projektpaket</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-list">
+          <li>Allt i Paket A</li>
+          <li>Praktisk implementering av förändringar</li>
+          <li>Optimering av skiftupplägg och arbetsbelastning</li>
+          <li>Förbättrat materialflöde och handover</li>
+          <li>KPI / OEE-indikatorer för uppföljning</li>
+          <li>Standardisering av arbetsmoment</li>
+          <li>Slutrapport + rekommendationer 30–90 dagar</li>
+        </ul>
+        <div class="pkg-cta">
+          <a href="mailto:pdojcinovic@proton.me?subject=Intresse%20Paket%20B%20–%204%20veckor&body=Hej%20Chempo%20Cheng,%0A%0AJag%20är%20intresserad%20av%20Paket%20B%20(4%20veckor).%0A%0AKortfattad%20beskrivning%20av%20mitt%20behov:%0A%0AÖnskad%20startperiod:%0A%0ATack!" class="btn-primary" style="display:block;text-align:center;">Välj Paket B</a>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:0.8rem; color:var(--muted); margin-top:1.5rem; text-align:center;">
+      Priset kan justeras efter företagets storlek, antal skift och grad av platsnärvaro. Faktureras exkl. moms.
+    </p>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-inner">
+    <div class="section-label">// Arbetssätt</div>
+    <h2>Fyra principer.<br/>Ett tydligt resultat.</h2>
+    <p class="section-desc">Jag arbetar metodiskt, nära teamet och med fokus på verkligheten – inte på generella teorier.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Observera – inte anta</h3>
+          <p>Jag tillbringar tid i produktionen, följer skiften och pratar med dem som jobbar i verkligheten. Det är så rotorsaker hittas.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Prioritera det som ger effekt</h3>
+          <p>Inte alla problem är lika viktiga. Jag fokuserar på det som ger snabb och mätbar förbättring – omedelbart, kortsiktigt och medellångt.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Konkreta åtgärder – inte rapporter</h3>
+          <p>Leveransen är alltid handlingsorienterad: tydliga steg, ansvar och förväntad effekt. Inga vaga rekommendationer.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Kunskapsöverföring till teamet</h3>
+          <p>Målet är att ert team kan bibehålla förbättringarna självständigt. Jag bygger en grund – inte ett beroende.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-label">// Kontakt</div>
+        <h3>Redo att ta nästa steg?</h3>
+        <p>Boka ett kostnadsfritt 15-minuters introduktionssamtal. Vi går igenom era utmaningar och tittar på vilket paket som passar bäst.</p>
+        <div class="contact-detail">
+          <div class="icon">📧</div>
+          <a href="mailto:pdojcinovic@proton.me">pdojcinovic@proton.me</a>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">📍</div>
+          <span style="color:var(--muted); font-size:0.95rem;">Skåne, Sverige – tillgänglig digitalt och på plats</span>
+        </div>
+      </div>
+      <div class="contact-boxes">
+        <div class="contact-box">
+          <div class="contact-box-title">Boka 15-min intro-samtal</div>
+          <p>Berätta kort om era utmaningar. Jag återkopplar samma dag (vardagar) med förslag och nästa steg.</p>
+          <a href="mailto:pdojcinovic@proton.me?subject=15-min%20intro%20–%20Produktionskonsult&body=Hej%20Chempo%20Cheng,%0A%0AJag%20vill%20boka%20ett%2015-min%20introduktionssamtal.%0A%0AKortfattat%20om%20behovet:%0A%0AFöreslagna%20tider:%0A1)%0A2)%0A3)%0A%0ATack!" class="btn-primary">Boka samtal</a>
+        </div>
+        <div class="contact-box">
+          <div class="contact-box-title">Skicka direkt förfrågan</div>
+          <p>Har du ett specifikt uppdrag eller vill ha en offert? Beskriv kortfattat och jag återkommer med ett konkret förslag.</p>
+          <a href="mailto:pdojcinovic@proton.me?subject=Förfrågan%20–%20Konsultuppdrag&body=Hej%20Chempo%20Cheng,%0A%0AJag%20är%20intresserad%20av%20ett%20konsultuppdrag.%0A%0ABeskrivning:%0A%0AÖnskad%20start:%0A%0ATack!" class="btn-secondary">Skicka förfrågan</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Chempo Cheng</div>
+  <p>Produktionskonsult · Optimering · Lean · KPI · Skåne, Sverige</p>
+  <p>© 2025 Chempo Cheng</p>
+</footer>
+
+</body>
+</html>
