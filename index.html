@@ -200,6 +200,97 @@
     .cred-title { font-weight: 600; font-size: 0.9rem; color: var(--white); }
     .cred-sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
 
+    /* ─── VEM JAG HJÄLPER ─────────────────────────────── */
+    #vem-jag-hjalper { background: var(--black); }
+    .target-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .target-card {
+      background: var(--card);
+      padding: 2rem 2.5rem;
+      display: flex; align-items: flex-start; gap: 1.5rem;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .target-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .target-card:hover::after { transform: scaleX(1); }
+    .target-card:hover { background: #1a2029; }
+    .target-icon-wrap {
+      width: 48px; height: 48px; min-width: 48px;
+      background: rgba(232,185,79,0.08);
+      border: 1px solid rgba(232,185,79,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      margin-top: 0.2rem;
+    }
+    .target-body {}
+    .target-title {
+      font-weight: 700; font-size: 0.95rem;
+      color: var(--white); text-transform: uppercase;
+      letter-spacing: 0.06em; margin-bottom: 0.4rem;
+    }
+    .target-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── PROBLEM JAG LÖSER ───────────────────────────── */
+    #problem { background: var(--dark); }
+    .problems-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .problem-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-top: 3px solid transparent;
+      padding: 2rem;
+      transition: border-top-color 0.25s, transform 0.2s;
+      position: relative;
+    }
+    .problem-card:hover {
+      border-top-color: var(--accent);
+      transform: translateY(-4px);
+    }
+    .problem-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.15em;
+      color: var(--accent); margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    .problem-title {
+      font-weight: 700; font-size: 1rem;
+      color: var(--white); margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+    .problem-consequence {
+      font-size: 0.82rem; color: var(--muted);
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.6;
+    }
+    .problem-solution {
+      font-size: 0.82rem;
+      color: var(--text);
+      line-height: 1.6;
+      display: flex; align-items: flex-start; gap: 0.5rem;
+    }
+    .problem-solution::before {
+      content: '→';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
     /* ─── TJÄNSTER ────────────────────────────────────── */
     #tjanster { background: var(--black); }
     .days-grid {
@@ -401,6 +492,8 @@
       .hero { padding: 7rem 1.5rem 3rem; }
       .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .target-grid { grid-template-columns: 1fr; }
+      .problems-grid { grid-template-columns: 1fr; }
       .packages { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
       .days-grid { grid-template-columns: 1fr 1fr; }
@@ -411,6 +504,7 @@
       .days-grid { grid-template-columns: 1fr; }
       .weeks-grid { grid-template-columns: 1fr; }
       h1 { font-size: 2.8rem; }
+      .problems-grid { grid-template-columns: 1fr; }
     }
 
     /* ─── ANIMATIONS ──────────────────────────────────── */
@@ -435,6 +529,8 @@
   <a href="#" class="nav-logo">Chempo Cheng</a>
   <ul class="nav-links">
     <li><a href="#om-mig">Om mig</a></li>
+    <li><a href="#vem-jag-hjalper">Vem jag hjälper</a></li>
+    <li><a href="#problem">Problem jag löser</a></li>
     <li><a href="#tjanster">Tjänster</a></li>
     <li><a href="#paket">Paket & Pris</a></li>
     <li><a href="#process">Arbetssätt</a></li>
@@ -526,6 +622,100 @@
             <div class="cred-title">Flerspråkig kommunikation</div>
             <div class="cred-sub">Svenska · Engelska · Serbiska / Bosniska / Kroatiska</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- VEM JAG HJÄLPER -->
+<section id="vem-jag-hjalper">
+  <div class="section-inner">
+    <div class="section-label">// Vem jag hjälper</div>
+    <h2>Är det här du?</h2>
+    <p class="section-desc">Jag arbetar med verksamheter som redan kör – men vet att det finns mer att hämta. Inget konsultprat, bara konkret förbättring.</p>
+
+    <div class="target-grid">
+      <div class="target-card">
+        <div class="target-icon-wrap">🏭</div>
+        <div class="target-body">
+          <div class="target-title">Tillverkande företag · 20–200 anställda</div>
+          <div class="target-desc">Du har produktion som rullar, men det finns återkommande stopp, kommunikationsbrister eller flöden som inte håller takten. Du behöver en extern blick som ser helheten utan intern prestige.</div>
+        </div>
+      </div>
+      <div class="target-card">
+        <div class="target-icon-wrap">📦</div>
+        <div class="target-body">
+          <div class="target-title">Lager & logistik med återkommande driftstörningar</div>
+          <div class="target-desc">Leveranser som halkar, material som saknas i rätt tid, eller skift som inte vet vad de tar över. Problemen är kända – men lösningarna sitter fast i vardagen.</div>
+        </div>
+      </div>
+      <div class="target-card">
+        <div class="target-icon-wrap">🔄</div>
+        <div class="target-body">
+          <div class="target-title">Verksamheter med flera skift</div>
+          <div class="target-desc">Fler skift skapar naturliga informationstapp och ansvarsglapp. Jag hjälper till att strukturera överlämningar och skapa tydliga rutiner som fungerar oavsett vem som är på golvet.</div>
+        </div>
+      </div>
+      <div class="target-card">
+        <div class="target-icon-wrap">⚡</div>
+        <div class="target-body">
+          <div class="target-title">Företag som vill förbättra flödet – utan att anställa direkt</div>
+          <div class="target-desc">Du är inte redo för en fast resurs, men du behöver förändring nu. Jag kommer in, identifierar problemet och lämnar ett system som håller – utan att skapa ett beroende.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROBLEM JAG LÖSER -->
+<section id="problem">
+  <div class="section-inner">
+    <div class="section-label">// Exempel på problem jag löser</div>
+    <h2>Känner du igen<br/>något av det här?</h2>
+    <p class="section-desc">Varje verksamhet är unik – men de operativa problemen ser förvånansvärt lika ut. Här är de vanligaste jag möter.</p>
+
+    <div class="problems-grid">
+      <div class="problem-card">
+        <div class="problem-num">Problem 01</div>
+        <div class="problem-title">Kommunikationsbrister mellan avdelningar</div>
+        <div class="problem-consequence">Beslut fattas av fel person vid fel tillfälle. Informationen når inte fram och produktionen betalar priset i form av stopp, omarbete och frustration.</div>
+        <div class="problem-solution">Jag kartlägger informationsflödet och sätter struktur på vem som kommunicerar vad – och när.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">Problem 02</div>
+        <div class="problem-title">Ineffektiva skiftöverlämningar</div>
+        <div class="problem-consequence">Viktig information går förlorad i övergången. Nästa skift startar i otakt, gör om misstag och tappar tid som aldrig tas igen.</div>
+        <div class="problem-solution">Jag strukturerar överlämningsrutiner som håller – oavsett vem som är på golvet.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">Problem 03</div>
+        <div class="problem-title">Materialflöde som skapar väntetid</div>
+        <div class="problem-consequence">Operatörer väntar på material, verktyg eller instruktioner. Maskiner stannar. Tid försvinner utan att det syns i någon rapport.</div>
+        <div class="problem-solution">Jag analyserar flödet och identifierar exakt var och varför väntetiden uppstår – och vad som eliminerar den.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">Problem 04</div>
+        <div class="problem-title">Otydlig ansvarsfördelning</div>
+        <div class="problem-consequence">Alla vet att något är fel. Ingen vet vem som ska åtgärda det. Problemet böljar tillbaka gång på gång utan att lösas på djupet.</div>
+        <div class="problem-solution">Jag skapar tydliga ägarskap och ansvarsdefinitioner som gör det omöjligt att missa vem som gör vad.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">Problem 05</div>
+        <div class="problem-title">Hög operativ förlust utan tydlig rotorsak</div>
+        <div class="problem-consequence">Siffrorna pekar på förlust – men var försvinner den? Utan rotorsaksanalys åtgärdas symptomen, inte problemet.</div>
+        <div class="problem-solution">Jag går in i driften, observerar verkligheten och hittar källan – inte bara siffran.</div>
+      </div>
+      <div class="problem-card" style="border-top: 3px solid rgba(232,185,79,0.2); background: rgba(232,185,79,0.03);">
+        <div class="problem-num" style="color: var(--muted);">Ditt problem</div>
+        <div class="problem-title" style="color: var(--muted);">Ser du inte ditt problem här?</div>
+        <div class="problem-consequence">Operativa utmaningar är ofta unika för verksamheten – men inte för metodiken. Hör av dig så tittar vi på det tillsammans.</div>
+        <div class="problem-solution" style="color: var(--accent);">
+          <a href="mailto:pdojcinovic@proton.me?subject=Fråga%20om%20mitt%20problem&body=Hej%20Chempo%20Cheng,%0A%0AJag%20har%20en%20utmaning%20som%20jag%20vill%20diskutera:%0A%0A" style="color: var(--accent); text-decoration: none; font-size: 0.82rem;">Kontakta mig direkt →</a>
         </div>
       </div>
     </div>
